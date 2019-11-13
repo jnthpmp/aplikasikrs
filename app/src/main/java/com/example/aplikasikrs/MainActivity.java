@@ -32,37 +32,35 @@ public class MainActivity extends AppCompatActivity {
         email = findViewById(R.id.emailtxt);
 
 
-        Button btnSignIn = (Button)findViewById(R.id.btnSignIn);
+        Button btnSignIn = (Button) findViewById(R.id.btnSignIn);
         btnSignIn.setOnClickListener(myBtnSignInClick);
 
 
     }
-private  View.OnClickListener myBtnSignInClick = new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-  SharedPreferences prefs = MainActivity.this.getSharedPreferences("prefs_file",MODE_PRIVATE);
-  String statusLogin = prefs.getString("isLogin",null);
-  SharedPreferences.Editor edit = prefs.edit();
-  String emailKey = email.getText().toString();
-  if (emailKey.contains("@staff.ukdw.ac.id")){
-      edit.putString("isLogin","admin");
-      edit.commit();
-      Intent intent = new Intent(MainActivity.this,HomeAdmin.class);
-      startActivity(intent);
-  }
-  else if (emailKey.contains("@si.ukdw.ac.id")){
-      edit.putString("isLogin","mhs");
-      edit.commit();
-      Intent intent = new Intent(MainActivity.this,HomeDosen.class);
-      startActivity(intent);
-  }
-  else {
-      Toast.makeText(MainActivity.this,"Emailmu salah sek bo lebokke !!",
-      Toast.LENGTH_SHORT).show();
-  }
 
-    }
-};
+    private View.OnClickListener myBtnSignInClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            SharedPreferences prefs = MainActivity.this.getSharedPreferences("prefs_file", MODE_PRIVATE);
+            String statusLogin = prefs.getString("isLogin", null);
+            SharedPreferences.Editor edit = prefs.edit();
+            String emailKey = email.getText().toString();
+            if (emailKey.contains("@staff.ukdw.ac.id")) {
+                edit.putString("isLogin", "admin");
+                edit.commit();
+                Intent intent = new Intent(MainActivity.this, HomeAdmin.class);
+                startActivity(intent);
+            } else if (emailKey.contains("@si.ukdw.ac.id")) {
+                edit.putString("isLogin", "mhs");
+                edit.commit();
+                Intent intent = new Intent(MainActivity.this, HomeDosen.class);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Emailmu salah sek bo lebokke !!",
+                        Toast.LENGTH_SHORT).show();
+            }
 
+        }
     };
+}
 
