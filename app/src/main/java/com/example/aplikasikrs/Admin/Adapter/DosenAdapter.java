@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.URLUtil;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -15,7 +16,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.aplikasikrs.Admin.CreateDosenActivity;
 import com.example.aplikasikrs.Admin.Model.Dosen;
 import com.example.aplikasikrs.R;
+import com.squareup.picasso.Picasso;
 
+import java.net.URL;
 import java.util.ArrayList;
 
 public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> {
@@ -37,12 +40,22 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) { //gunanya utk memasukkan data
+        /*URL url = new URL("http://image10.bizrate-images.com/resize?sq")*/
         holder.txtNidn.setText(dataList.get(position).getNidn());
         holder.txtNamaDosen.setText(dataList.get(position).getNamaDosen());
         holder.txtGelar.setText(dataList.get(position).getGelar());
         holder.txtAlamat.setText(dataList.get(position).getAlamat());
         holder.txtEmail.setText(dataList.get(position).getEmail());
-        holder.imgFoto.setImageResource(dataList.get(position).getFoto());
+        /*holder.imgFoto.setImageResource(dataList.get(position).getFoto());*/
+        holder.imgFoto.getLayoutParams().width = 100;
+        holder.imgFoto.getLayoutParams().height = 100;
+        if (dataList.get(position).getFoto() != null){
+            Picasso.with(this.context)
+                    .load(dataList.get(position).getFoto())
+                    .into(holder.imgFoto);
+
+        }
+
         holder.cv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

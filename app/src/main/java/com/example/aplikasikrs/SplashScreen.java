@@ -33,7 +33,7 @@ public class SplashScreen extends AppCompatActivity {
                 Intent intent = new Intent(SplashScreen.this, HomeAdmin.class);
                 startActivity(intent);
             }
-            else if (statusLogin.equals("mhs")){
+            else if (statusLogin.equals("m  hs")){
                 Intent intent = new Intent(SplashScreen.this, HomeDosen.class);
                 startActivity(intent);
             }
