@@ -74,7 +74,7 @@ public class RecyclerViewDaftarDosen extends AppCompatActivity {
 
         GetDataService service = RetrofitClientInstance.getRetrofitInstance()
                 .create(GetDataService.class);
-        Call<ArrayList<Dosen>> call = service.getDosenAll("721600012");
+        Call<ArrayList<Dosen>> call = service.getDosenAll("72170094");
         call.enqueue(new Callback<ArrayList<Dosen>>() {
             @Override
             public void onResponse(Call<ArrayList<Dosen>> call, Response<ArrayList<Dosen>> response) {
