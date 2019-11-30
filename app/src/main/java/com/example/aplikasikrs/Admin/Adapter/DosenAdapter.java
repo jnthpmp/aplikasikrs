@@ -2,6 +2,7 @@ package com.example.aplikasikrs.Admin.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,7 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.card_view_dosen,parent,false); //
         context = parent.getContext();
@@ -72,10 +74,13 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder{ //utk menghubungkan dari txt
+    public class ViewHolder extends RecyclerView.ViewHolder//utk menghubungkan dari txt
+       implements View.OnCreateContextMenuListener{
         private TextView txtNidn, txtNamaDosen, txtGelar, txtAlamat, txtEmail;
         private ImageView imgFoto;
         private CardView cv;
+
+
 
         public ViewHolder(View view){
             super(view);
@@ -86,6 +91,15 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
             txtEmail = view.findViewById(R.id.txtEmail);
             imgFoto = view.findViewById(R.id.imgFotoDosen);
             cv = view.findViewById(R.id.cardViewDosen);
+            view.setOnCreateContextMenuListener(this);
+
+        }
+
+        @Override
+        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo menuInfo) {
+            contextMenu.setHeaderTitle("Pilih Aksi");
+            contextMenu.add(this.getAdapterPosition(),view.getId(),0,"ubah Data");
+            contextMenu.add(this.getAdapterPosition(),view.getId(),0,"Hapus data");
         }
     }
 }
