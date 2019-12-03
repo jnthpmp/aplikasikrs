@@ -118,12 +118,12 @@ public class RecyclerViewDaftarDosen extends AppCompatActivity {
         if (item.getTitle()=="Ubah Data Dosen"){
             Intent intent = new Intent(RecyclerViewDaftarDosen.this,CreateDosenActivity.class);
             intent.putExtra("id_dosen",dosen.getId());
-            intent.putExtra("nama_dosen",dosen.getId());
-            intent.putExtra("nidn_dosen",dosen.getId());
-            intent.putExtra("alamat_dosen",dosen.getId());
-            intent.putExtra("email_dosen",dosen.getId());
-            intent.putExtra("gelar_dosen",dosen.getId());
-            intent.putExtra("foto_dosen",dosen.getId());
+            intent.putExtra("nama_dosen",dosen.getNamaDosen());
+            intent.putExtra("nidn_dosen",dosen.getNidn());
+            intent.putExtra("alamat_dosen",dosen.getAlamat());
+            intent.putExtra("email_dosen",dosen.getEmail());
+            intent.putExtra("gelar_dosen",dosen.getGelar());
+            intent.putExtra("foto_dosen",dosen.getFoto());
             intent.putExtra("is_update",true);
             startActivity(intent);
                     }

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.aplikasikrs.Admin.Adapter.DosenAdapter;
@@ -39,8 +40,10 @@ public class CreateDosenActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     boolean isUpdate = false;
     String isDosen = "";
+    String part_image;
     private  String stringImg = "";
     GetDataService service;
+    final int Request_Gallery = 9544;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +57,18 @@ public class CreateDosenActivity extends AppCompatActivity {
         alamat_dosen = (EditText) findViewById(R.id.editText6);
         email_dosen = (EditText) findViewById(R.id.editText5);
         foto_dosen = (EditText) findViewById(R.id.txt_foto_dosen);
+
+
+        Button btnCariFoto = findViewById(R.id.buttonCariFoto);
+        btnCariFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent,"Open_galery"),Request_Gallery);
+            }
+        });
 
         progressDialog = new ProgressDialog(this);
         checkUpdate();
