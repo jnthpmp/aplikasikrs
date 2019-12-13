@@ -53,7 +53,7 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
         holder.imgFoto.getLayoutParams().height = 100;
         if (dataList.get(position).getFoto() != null){
             Picasso.with(this.context)
-                    .load(dataList.get(position).getFoto())
+                    .load("https://kpsi.fti.ukdw.ac.id/progmob/"+dataList.get(position).getFoto())
                     .into(holder.imgFoto);
 
         }
@@ -82,6 +82,7 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
 
 
 
+
         public ViewHolder(View view){
             super(view);
             txtNidn = view.findViewById(R.id.txtNidn);
@@ -98,8 +99,8 @@ public class DosenAdapter extends RecyclerView.Adapter<DosenAdapter.ViewHolder> 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo menuInfo) {
             contextMenu.setHeaderTitle("Pilih Aksi");
-            contextMenu.add(this.getAdapterPosition(),view.getId(),0,"ubah Data");
-            contextMenu.add(this.getAdapterPosition(),view.getId(),0,"Hapus data");
+            contextMenu.add(this.getAdapterPosition(),view.getId(),0,"Ubah Data Dosen");
+            contextMenu.add(this.getAdapterPosition(),view.getId(),0,"Hapus Data Dosen");
         }
     }
 }
